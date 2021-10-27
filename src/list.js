@@ -1,5 +1,3 @@
-import { isBoolean, isInteger } from "lodash";
-
 export default class List {
   constructor() {
     this.list = JSON.parse(localStorage.getItem('todo-list'));
@@ -10,6 +8,9 @@ export default class List {
   }
 
   display() {
+    for (let i = 0; i < this.list.length; i += 1) {
+      this.list[i].index = i;
+    }
     this.list.sort((a, b) => {
       if (a.index < b.index) return -1;
       if (a.index > b.index) return 1;
@@ -19,46 +20,47 @@ export default class List {
     const listSection = document.querySelector('#list-items');
     listSection.innerHTML = '';
     for (let i = 0; i < this.list.length; i += 1) {
-      const task = this.list[i];
-      let taskItem = `
+      const activity = this.list[i];
+      let activityItem = `
         <li class="d-flex s-between list-item">`;
-      if (task.completed) {
-        taskItem += `<span class="material-icons done update-status" data="${task.index}">
+      if (activity.completed) {
+        activityItem += `<span class="material-icons done update-status" data="${activity.index}">
               done
             </span>
             <p contenteditable="true" class="completed">
-              ${task.description}
+              ${activity.description}
             </p>
             `;
       } else {
-        taskItem += ` <span class="material-icons  update-status"  data="${task.index}">
+        activityItem += ` <span class="material-icons  update-status"  data="${activity.index}">
               check_box_outline_blank
             </span>
             <p contenteditable="true">
-              ${task.description}
+              ${activity.description}
             </p>`;
       }
-      taskItem += `
+      activityItem += `
           <span class="material-icons  move">
             more_vert
             </span>
-          <!-- <span class="material-icons" onclick="deleteTask(${task.index})">
+          <!-- <span class="material-icons" onclick="deleteactivity(${activity.index})">
             delete
           </span> -->
         </li>
       `;
-      listSection.innerHTML += taskItem;
+      listSection.innerHTML += activityItem;
     }
     this.activateActions();
   }
 
   addActivity(activity) {
-    if (activity && activity.length > 0) {
-      this.list.push({
+    if (activity || activity === 0) {
+      const newActivity = {
         description: activity,
         completed: false,
         index: this.list.length,
-      });
+      };
+      this.list.push(newActivity);
       this.display();
     }
   }
@@ -81,9 +83,14 @@ export default class List {
     this.display();
   }
 
+  clearCompleted() {
+    this.list = this.list.filter((activity) => activity.completed === false);
+    this.display();
+  }
+
   activateActions() {
+    // activity status changer
     const updateStatusBtns = document.querySelectorAll('.update-status');
-    // console.log(updateStatusBtns);
     if (updateStatusBtns !== null) {
       updateStatusBtns.forEach((item) => {
         item.addEventListener('click', () => {
