@@ -16,7 +16,8 @@ main {
 
 .todo-list {
   box-shadow: rgba(0, 0, 0, 0.15) 0 2px 8px 0;
-  min-width: 500px;
+  width: 500px;
+  max-width: 100%;
 }
 
 form button .material-icons {
