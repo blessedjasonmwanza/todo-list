@@ -28,7 +28,7 @@ main {
   color: #333;
 }
 
-.todo-list .material-icons.move{
+.todo-list .material-icons.move {
   cursor: move;
 }
 
@@ -89,7 +89,7 @@ form button {
   border: 0px solid transparent;
 }
 
-form button .material-icons{
+form button .material-icons {
   font-size: 15px;
 }
 
@@ -117,7 +117,16 @@ form button .material-icons{
   font-size: 15px ;
 }
 
-.list-item.editing{
+.list-item .material-icons.done {
+  color: rgb(46, 138, 230);
+}
+
+.list-item p.completed {
+  text-decoration-line:line-through;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.list-item.editing {
   background-color: #fffeca;
 }
 
