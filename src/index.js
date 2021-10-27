@@ -4,7 +4,7 @@ import './style.css';
 const todoList = [
   {
     description: 'Pray',
-    completed: false,
+    completed: true,
     index: 0,
   },
   {
@@ -28,6 +28,12 @@ const todoList = [
     index: 4,
   },
 ];
+
+todoList.sort((a, b) => {
+  if(a.index < b.index) return -1;
+  if(a.index > b.index) return 1;
+  return 0;
+});
 
 const listSection = document.querySelector('#list-items');
 listSection.innerHTML = '';
