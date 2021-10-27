@@ -1,56 +1,57 @@
-import _ from 'lodash';
+import _ from 'lodash';// eslint-disable-line no-unused-vars
 import './style.css';
 
-let todoList = [
-    {
-        description: 'Pray',
-        completed: false,
-        index: 0,
-    },
-    {
-        description: 'Exercise',
-        completed: true,
-        index: 1,
-    },
-    {
-        description: 'Shower',
-        completed: false,
-        index: 2,
-    },
-    {
-        description: 'Eat Breakfast',
-        completed: false,
-        index: 3,
-    },
-    {
-        description: 'Code',
-        completed: false,
-        index: 4,
-    },
+const todoList = [
+  {
+    description: 'Pray',
+    completed: false,
+    index: 0,
+  },
+  {
+    description: 'Exercise',
+    completed: true,
+    index: 1,
+  },
+  {
+    description: 'Shower',
+    completed: false,
+    index: 2,
+  },
+  {
+    description: 'Eat Breakfast',
+    completed: false,
+    index: 3,
+  },
+  {
+    description: 'Code',
+    completed: false,
+    index: 4,
+  },
 ];
 
 const listSection = document.querySelector('#list-items');
 listSection.innerHTML = '';
-for(let task of todoList) {
+for (let i = 0; i < todoList.length; i += 1) {
+  const task = todoList[i];
   let taskItem = `
     <li class="d-flex s-between list-item">`;
-      if(task.completed){
-        taskItem += `<span class="material-icons done" onclick="updateStatus(${task.index}, 'pending')">
+  if (task.completed) {
+    taskItem += `<span class="material-icons done" onclick="updateStatus(${task.index}, 'pending')">
           done
         </span>
         <p contenteditable="true" class="completed">
           ${task.description}
         </p>
         `;
-      }else{
-        taskItem += ` <span class="material-icons" onclick="updateStatus(${task.index}, 'completed')">
+  } else {
+    taskItem += ` <span class="material-icons" onclick="updateStatus(${task.index}, 'completed')">
           check_box_outline_blank
         </span>
         <p contenteditable="true">
           ${task.description}
         </p>`;
-      }
-      taskItem += `
+  }
+  taskItem += `
       <span class="material-icons  move">
         more_vert
         </span>
