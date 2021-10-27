@@ -1,4 +1,3 @@
-import _ from 'lodash';// eslint-disable-line no-unused-vars
 import './style.css';
 
 const todoList = [
@@ -30,8 +29,8 @@ const todoList = [
 ];
 
 todoList.sort((a, b) => {
-  if(a.index < b.index) return -1;
-  if(a.index > b.index) return 1;
+  if (a.index < b.index) return -1;
+  if (a.index > b.index) return 1;
   return 0;
 });
 
