@@ -105,7 +105,6 @@ form button {
   width: calc(100% - 50px);
   border: 0 solid transparent;
   outline: none;
-  background: transparent;
   height: 22px;
   line-height: 22px;
   padding: 0;
@@ -114,7 +113,7 @@ form button {
   font-weight: 300;
   font-size: 15px;
   overflow-y: auto;
-  background: #fff;
+  background:#fff;
 }
 
 .list-item .material-icons.done {
