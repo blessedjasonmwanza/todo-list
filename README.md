@@ -26,7 +26,7 @@ cd Hello World
 ```
 > Open a index.html file with your code editor of your choice and/or a browser of your choice.
 ```bash
-Open the project using a live saver extension that can be found into your code editor.
+Open the project using a live sever extension that can be found within your code editor extensions library.
 ```
 
 ### Environment Prerequisites

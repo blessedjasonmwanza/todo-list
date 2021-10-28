@@ -32,7 +32,8 @@ export default class List {
             </p>
             `;
       } else {
-        activityItem += ` <span class="material-icons  update-status"  data="${activity.index}">
+        activityItem += `
+            <span class="material-icons  update-status"  data="${activity.index}">
               check_box_outline_blank
             </span>
             <p contenteditable="true">
@@ -40,12 +41,9 @@ export default class List {
             </p>`;
       }
       activityItem += `
-          <span class="material-icons  move">
-            more_vert
-            </span>
-          <!-- <span class="material-icons" onclick="deleteactivity(${activity.index})">
+          <span class="material-icons delete-activity" data="${activity.index}">
             delete
-          </span> -->
+          </span>
         </li>
       `;
       listSection.innerHTML += activityItem;
@@ -95,6 +93,14 @@ export default class List {
       updateStatusBtns.forEach((item) => {
         item.addEventListener('click', () => {
           this.updateActivityStatus(item.getAttribute('data'));
+        });
+      });
+    }
+    const deleteBtns = document.querySelectorAll('.delete-activity');
+    if (deleteBtns) {
+      deleteBtns.forEach((activity) => {
+        activity.addEventListener('click', () => {
+          this.deleteActivity(activity.getAttribute('data'));
         });
       });
     }
