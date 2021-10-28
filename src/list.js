@@ -8,26 +8,18 @@ export default class List {
   }
 
   display() {
-    for (let i = 0; i < this.list.length; i += 1) {
-      this.list[i].index = i;
-    }
-    this.list.sort((a, b) => {
-      if (a.index < b.index) return -1;
-      if (a.index > b.index) return 1;
-      return 0;
-    });
-    localStorage.setItem('todo-list', JSON.stringify(this.list));
+    this.saveData();
     const listSection = document.querySelector('#list-items');
     listSection.innerHTML = '';
-    for (let i = 0; i < this.list.length; i += 1) {
-      const activity = this.list[i];
+    this.list.forEach((activity) => {
       let activityItem = `
-        <li class="d-flex s-between list-item">`;
+        <li class="d-flex s-between list-item" id="item-data-${activity.index}">`;
       if (activity.completed) {
-        activityItem += `<span class="material-icons done update-status" data="${activity.index}">
+        activityItem += `
+            <span class="material-icons done update-status" data="${activity.index}">
               done
             </span>
-            <p contenteditable="true" class="completed">
+            <p contenteditable="true" class="completed activity" data="${activity.index}">
               ${activity.description}
             </p>
             `;
@@ -36,7 +28,7 @@ export default class List {
             <span class="material-icons  update-status"  data="${activity.index}">
               check_box_outline_blank
             </span>
-            <p contenteditable="true">
+            <p contenteditable="true" class="activity" data="${activity.index}">
               ${activity.description}
             </p>`;
       }
@@ -47,7 +39,7 @@ export default class List {
         </li>
       `;
       listSection.innerHTML += activityItem;
-    }
+    });
     this.activateActions();
   }
 
@@ -86,8 +78,30 @@ export default class List {
     this.display();
   }
 
+  clearAll() {
+    this.list.splice(0);
+    this.display();
+  }
+
+  saveData() {
+    for (let i = 0; i < this.list.length; i += 1) {
+      this.list[i].index = i;
+    }
+    this.list.sort((a, b) => {
+      if (a.index < b.index) return -1;
+      if (a.index > b.index) return 1;
+      return 0;
+    });
+    localStorage.setItem('todo-list', JSON.stringify(this.list));
+  }
+
+  editActivity(index, description) {
+    this.list[index].description = description;
+    this.saveData();
+  }
+
   activateActions() {
-    // activity status changer
+    // activity status checkbox changer
     const updateStatusBtns = document.querySelectorAll('.update-status');
     if (updateStatusBtns !== null) {
       updateStatusBtns.forEach((item) => {
@@ -96,11 +110,23 @@ export default class List {
         });
       });
     }
+    // Delete Activity btn
     const deleteBtns = document.querySelectorAll('.delete-activity');
     if (deleteBtns) {
       deleteBtns.forEach((activity) => {
         activity.addEventListener('click', () => {
           this.deleteActivity(activity.getAttribute('data'));
+        });
+      });
+    }
+    // edit activity handler
+    const activities = document.querySelectorAll('.activity');
+    if (activities) {
+      activities.forEach((activity) => {
+        activity.addEventListener('input', (e) => {
+          const description = e.target.innerText;
+          const index = e.target.getAttribute('data');
+          this.editActivity(index, description);
         });
       });
     }
