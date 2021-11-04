@@ -29,4 +29,13 @@ describe('add and remove', () => {
     todoList.addActivity('Test');
     expect(todoList.list).toHaveLength(1);
   });
+  test('remove task', () => {
+    const todoList = new List();
+    todoList.clearAll();
+    todoList.addActivity('Test');
+    todoList.addActivity('Test');
+    todoList.addActivity('Test');
+    todoList.deleteActivity(1);
+    expect(todoList.list).toHaveLength(2);
+  });
 });
