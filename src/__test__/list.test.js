@@ -51,7 +51,7 @@ describe('DOM manipulations: edit update clear tests', () => {
     todoList.updateActivityStatus(1);
     expect(todoList.list[0].completed).toBe(true);
   });
-  
+
   test('clear completed', () => {
     const todoList = new List();
     todoList.clearAll();
@@ -64,6 +64,5 @@ describe('DOM manipulations: edit update clear tests', () => {
     todoList.updateActivityStatus(2);
     todoList.clearCompleted();
     expect(todoList.list).toHaveLength(2);
-
   });
 });
