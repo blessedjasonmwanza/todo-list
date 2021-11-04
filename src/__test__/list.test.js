@@ -44,3 +44,12 @@ describe('add and remove', () => {
     expect(todoList.list).toHaveLength(2);
   });
 });
+
+describe('update Activity Status', () => {
+  test('update status', () => {
+    const todoList = new List();
+    todoList.addActivity('Testing');
+    todoList.updateActivityStatus(1);
+    expect(todoList.list[0].completed).toBe(true);
+  });
+});
