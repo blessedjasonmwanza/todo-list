@@ -1,9 +1,6 @@
 export default class List {
   constructor() {
-    this.list = JSON.parse(localStorage.getItem('todo-list'));
-    if (!this.list) {
-      this.list = [];
-    }
+    this.list = JSON.parse(localStorage.getItem('todo-list')) || [];
     this.display();
   }
 
@@ -57,17 +54,17 @@ export default class List {
 
   deleteActivity(activityIndex) {
     if (activityIndex) {
-      this.list.splice(activityIndex, 1);
+      this.list.splice((activityIndex - 1), 1);
       this.display();
     }
   }
 
   updateActivityStatus(activityIndex) {
     if (activityIndex !== undefined) {
-      if (this.list[activityIndex].completed === true) {
-        this.list[activityIndex].completed = false;
+      if (this.list[activityIndex - 1].completed === true) {
+        this.list[activityIndex - 1].completed = false;
       } else {
-        this.list[activityIndex].completed = true;
+        this.list[activityIndex - 1].completed = true;
       }
     }
     this.display();
@@ -84,9 +81,10 @@ export default class List {
   }
 
   saveData() {
-    for (let i = 0; i < this.list.length; i += 1) {
-      this.list[i].index = i;
-    }
+    this.list.forEach((task, index) => {
+      this.list[index].index = (index + 1);
+    });
+
     this.list.sort((a, b) => {
       if (a.index < b.index) return -1;
       if (a.index > b.index) return 1;
@@ -96,7 +94,7 @@ export default class List {
   }
 
   editActivity(index, description) {
-    this.list[index].description = description;
+    this.list[index - 1].description = description;
     this.saveData();
   }
 
@@ -105,18 +103,14 @@ export default class List {
     const updateStatusBtns = document.querySelectorAll('.update-status');
     if (updateStatusBtns !== null) {
       updateStatusBtns.forEach((item) => {
-        item.addEventListener('click', () => {
-          this.updateActivityStatus(item.getAttribute('data'));
-        });
+        item.addEventListener('click', () => this.updateActivityStatus(item.getAttribute('data')));
       });
     }
     // Delete Activity btn
     const deleteBtns = document.querySelectorAll('.delete-activity');
     if (deleteBtns) {
       deleteBtns.forEach((activity) => {
-        activity.addEventListener('click', () => {
-          this.deleteActivity(activity.getAttribute('data'));
-        });
+        activity.addEventListener('click', () => this.deleteActivity(activity.getAttribute('data')));
       });
     }
     // edit activity handler
