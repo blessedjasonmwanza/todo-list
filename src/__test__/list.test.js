@@ -65,4 +65,13 @@ describe('DOM manipulations: edit update clear tests', () => {
     todoList.clearCompleted();
     expect(todoList.list).toHaveLength(2);
   });
+  test('clear all', () => {
+    const todoList = new List();
+    todoList.clearAll();
+    todoList.addActivity('tes 1');
+    todoList.addActivity('tes 2');
+    expect(todoList.list).toHaveLength(2);
+    todoList.clearAll();
+    expect(todoList.list).toHaveLength(0);
+  });
 });
