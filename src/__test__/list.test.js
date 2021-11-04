@@ -28,6 +28,11 @@ describe('add and remove', () => {
     const todoList = new List();
     todoList.addActivity('Test');
     expect(todoList.list).toHaveLength(1);
+
+    // storage mocked data
+    const storedData = JSON.parse(localStorage.getItem('todo-list'));
+    expect(storedData).not.toBe(null);
+    expect(localStorage).toHaveLength(1);
   });
   test('remove task', () => {
     const todoList = new List();
