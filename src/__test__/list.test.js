@@ -45,19 +45,14 @@ describe('add and remove', () => {
   });
 });
 
-describe('update Activity Status', () => {
+describe('edit update clear tests', () => {
   test('update status', () => {
     const todoList = new List();
     todoList.addActivity('Testing');
     todoList.updateActivityStatus(1);
     expect(todoList.list[0].completed).toBe(true);
   });
-});
-describe('update Activity Status', () => {
-  test('update status', () => {
-    const todoList = new List();
-    todoList.addActivity('Testing');
-    todoList.updateActivityStatus(1);
-    expect(todoList.list[0].completed).toBe(true);
-  });
+  test('clear completed tasks', () => {
+
+  })
 });
