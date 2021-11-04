@@ -44,11 +44,26 @@ describe('add and remove', () => {
     expect(todoList.list).toHaveLength(2);
   });
 });
-describe('edit update clear tests', () => {
+describe('DOM manipulations: edit update clear tests', () => {
   test('update status', () => {
     const todoList = new List();
     todoList.addActivity('Testing');
     todoList.updateActivityStatus(1);
     expect(todoList.list[0].completed).toBe(true);
+  });
+  
+  test('clear completed', () => {
+    const todoList = new List();
+    todoList.clearAll();
+    todoList.addActivity('tes 1');
+    todoList.addActivity('tes 2');
+    todoList.addActivity('tes 3');
+    todoList.addActivity('tes 4');
+    expect(todoList.list).toHaveLength(4);
+    todoList.updateActivityStatus(1);
+    todoList.updateActivityStatus(2);
+    todoList.clearCompleted();
+    expect(todoList.list).toHaveLength(2);
+
   });
 });
