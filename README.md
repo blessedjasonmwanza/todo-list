@@ -24,11 +24,28 @@ If you want a copy of this file go to the [GitHub repository](https://github.com
 git clone git@github.com:blessedjasonmwanza/todo-list.git
 cd Hello World
 ```
-> Open a index.html file with your code editor of your choice and/or a browser of your choice.
+>  cd to the project directory
 ```bash
 Open the project using a live sever extension that can be found within your code editor extensions library.
 ```
+> install project dependencies
 
+  ```npm install .```
+
+> build project (not necessary, but might be needed encase going straight to starting the project fails).
+
+  ```npm run build```
+
+> start project
+
+  ```npm start```
+
+  #### Setup
+ > After installing project dependencies, run;
+
+ ```npm run test``` 
+
+ > ...in your bash (assuming your in the root of this project);
 ### Environment Prerequisites
 - Web Browser
 - Code editor: _[Vscode](https://code.visualstudio.com/)_ or _[Sublime Text](https://www.sublimetext.com/)_
