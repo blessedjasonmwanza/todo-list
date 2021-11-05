@@ -40,7 +40,7 @@ Open the project using a live sever extension that can be found within your code
 
   ```npm start```
 
-  #### Setup
+  #### Running tests
  > After installing project dependencies, run;
 
  ```npm run test``` 
