@@ -4,6 +4,10 @@
 
 > An advanced Todo List web application built with pure JS, HTML & CSS 
 
+# Preview 
+ > 👀 Here is a sneak peak of how the project looks
+
+![Todo List Preview](./To-do-list.png)
 ## Built With
 
 - HTML
@@ -11,9 +15,12 @@
 - JS
 - NPM Webpacks
 
-## Live Demo
-Live Demo, if available, [Can be viewed here](https://blessedjasonmwanza.github.io/todo-list/) when live.
+<hr>
 
+## Live Demo
+### Check it out and start using it right now 😍 [Click here to view Live demo](https://blessedjasonmwanza.github.io/todo-list/).
+
+<hr>
 
 ## Getting Started
 If you want a copy of this file go to the [GitHub repository](https://github.com/blessedjasonmwanza/todo-list) and download it from the link below.
@@ -50,11 +57,15 @@ Open the project using a live sever extension that can be found within your code
 - Web Browser
 - Code editor: _[Vscode](https://code.visualstudio.com/)_ or _[Sublime Text](https://www.sublimetext.com/)_
 
+<hr>
+
 ## 👤 Author : Blessed Jason Mwanza
 
 - GitHub: [@blessedjasonmwanza](https://github.com/blessedjasonmwanza)
 - Twitter: [@mwanzabj](https://twitter.com/mwanzabj)
 - LinkedIn: [Blessedjasonmwanza](https://linkedin.com/in/blessedjasonmwanza)
+
+<hr>
 
 
 ## 🤝 Contributing
@@ -65,4 +76,4 @@ Feel free to check the [issues page](../../issues/).
 
 ## Show your support
 
-Give a ⭐️ if you like this project!
+Please 🙏 Please 🙏... Give a ⭐️ if you like this project!
